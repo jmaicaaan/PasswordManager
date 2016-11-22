@@ -1,0 +1,40 @@
+<ion-view title="Password Manager">
+  <ion-content padding="true" class="has-header">
+    <div class="card">
+        <div class="item item-divider">
+            {{vm.item.title}}
+        </div>
+        <div class="item item-text-wrap">
+         <form id="password-form" class="list">
+            <label class="item item-input item-stacked-label" name="title">
+                <span class="input-label">Title</span>
+                <input id="title" type="text" ng-model="vm.item.title" placeholder="Title" ng-disabled="true">
+            </label>
+            <label class="item item-input item-stacked-label" name="username">
+                <span class="input-label">Username</span>
+                <input id="username" type="text" ng-model="vm.item.username" placeholder="Username">
+            </label>
+            <label class="item item-input item-stacked-label" name="email">
+                <span class="input-label">Email</span>
+                <input id="email" type="text" ng-model="vm.item.email" placeholder="Email">
+            </label>
+            <label class="item item-input item-stacked-label" name="password">
+                <span class="input-label">Password</span>
+                <input id="password" type="password" ng-value="vm.item.password" ng-model="vm.item.password" placeholder="Password" ng-hide="vm.isTouched">
+                <input id="hidden_password" type="text" ng-value="vm.item.password" ng-show="vm.isTouched">
+            </label>
+             <label class="item item-input item-stacked-label" name="username">
+                <span class="input-label">View Password</span>
+                <button id="showPasswordBtn" on-hold="vm.toggle();" on-release="vm.toggle();" class="button-icon icon ion-eye"></button>
+            </label>
+            <button class="button button-full button-positive" ng-click="vm.updatePassword();">
+                Save Changes
+            </button>
+             <button class="button button-full button-assertive" ng-click="vm.deletePassword();">
+                Delete
+            </button>
+         </form>
+        </div>
+    </div>
+  </ion-content>
+</ion-view>

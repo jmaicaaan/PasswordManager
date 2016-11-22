@@ -1,0 +1,24 @@
+<ion-view title="Password Manager">
+    <ion-content padding="true">
+        <div class="list card">
+            <div class="item item-icon-left">
+                <i class="icon ion-search placeholder-icon"></i>
+                <input type="text" placeholder="Search" ng-model="vm.searchQuery">
+            </div>
+        </div>
+
+        <ion-list>
+            <ion-item collection-repeat="item in vm.$localStorageService.items | filter: vm.searchQuery"
+                ui-sref="detail({item : item.title})">
+                <span></span>
+                <p>{{$index + 1}}. {{item.title}}</p>
+                <ion-option-button class="button-positive ion-edit" 
+                    ui-sref="detail({item : item.title})">
+                </ion-option-button>
+                <ion-option-button class="button-assertive ion-trash-b" ng-click="vm.remove(item.title);">
+                </ion-option-button>
+            </ion-item>
+        </ion-list>
+    </ion-content>
+    <button class="button button-positive button-fab button-fab-bottom-right ion-plus" ng-click="vm.$modalService.showModal();"></button>
+</ion-view>
