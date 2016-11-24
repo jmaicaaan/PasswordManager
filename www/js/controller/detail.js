@@ -1,25 +1,17 @@
 module.exports = detail;
 
-function detail($localStorageService, $timeout, $stateParams, $state, $popupService, $ionicPopup){
+function detail($localStorageService, $stateParams, $state, $popupService, $fingerprintAuthService){
     var self = this;
     self.item = {};
     self.showPassword = showPassword;
     self.updatePassword = updatePassword;
     self.deletePassword = deletePassword;
-    self.toggle = toggle;
-    self.isTouched = false;
     
     init();
 
     function init(){
         var key = $stateParams.item;
         self.item = JSON.parse($localStorageService.getByKey(key));
-    }
-
-    function showPassword(){
-        var password = self.item.password,
-            alertMessage = ['Your password is:', '<b>', password, '</b>'].join(' ');
-        $popupService.alertPopup(alertMessage);
     }
 
     function updatePassword(){
@@ -46,7 +38,15 @@ function detail($localStorageService, $timeout, $stateParams, $state, $popupServ
         });
     }
 
-    function toggle(){
-        self.isTouched = !self.isTouched;
+    function showPassword(){
+        try {
+            $fingerprintAuthService.authenticate(function(result){
+                var password = self.item.password,
+                alertMessage = ['Your password is:', '<b>', password, '</b>'].join(' ');
+                $popupService.alertPopup(alertMessage);
+            });
+        } catch (error) {
+            $popupService.alertPopup(error);
+        }
     }
 }

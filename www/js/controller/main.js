@@ -1,12 +1,13 @@
 module.exports = main;
 
-function main($scope, $ionicModal, $modalService, $localStorageService){
+function main($scope, $modalService, $localStorageService, $popupService){
     var self = this;
-    self.searchQuery = "";
-    self.$localStorageService = $localStorageService;
-    self.$modalService = $modalService;
+    self.searchQuery = '';
     self.add = add;
     self.remove = remove;
+    self.$localStorageService = $localStorageService;
+    self.$modalService = $modalService;
+
 
     init();
  
@@ -28,7 +29,7 @@ function main($scope, $ionicModal, $modalService, $localStorageService){
             $modalService.hideModal();
             emptyTheForm();
         } catch (error) {
-            alert(error);
+            $popupService.alertPopup(error);
         }
     }
     

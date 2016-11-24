@@ -20,12 +20,11 @@
             </label>
             <label class="item item-input item-stacked-label" name="password">
                 <span class="input-label">Password</span>
-                <input id="password" type="password" ng-value="vm.item.password" ng-model="vm.item.password" placeholder="Password" ng-hide="vm.isTouched">
-                <input id="hidden_password" type="text" ng-value="vm.item.password" ng-show="vm.isTouched">
+                <input id="password" type="password" ng-model="vm.item.password" placeholder="Password">
             </label>
              <label class="item item-input item-stacked-label" name="username">
                 <span class="input-label">View Password</span>
-                <button id="showPasswordBtn" on-hold="vm.toggle();" on-release="vm.toggle();" class="button-icon icon ion-eye"></button>
+                <button id="showPasswordBtn" on-hold="vm.showPassword();" class="button-icon icon ion-eye"></button>
             </label>
             <button class="button button-full button-positive" ng-click="vm.updatePassword();">
                 Save Changes

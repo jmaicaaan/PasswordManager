@@ -24,4 +24,4 @@ angular.module('pwdmanager', ['ionic', 'ionic-material'])
 .service('$localStorageService', require('./service/localStorage'))
 .service('$popupService', require('./service/popup'))
 .service('$modalService', require('./service/modal'))
-.directive('tapHold', require('./directive/tapHold'));
+.service('$fingerprintAuthService', require('./service/fingerprintAuth'));

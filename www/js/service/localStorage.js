@@ -10,11 +10,11 @@ function localStorage(){
     $service.update = update;
 
     function add(key, value){
-        if(!key || !value)
-            throw "Title input is empty.";
+        if(!key)
+            throw 'Title input is empty.';
         
         if(hasDuplicate(key)){
-            throw "Title is already existing";
+            throw 'Title is already existing';
         }
         
         window.localStorage.setItem(key, value);
@@ -23,7 +23,7 @@ function localStorage(){
 
     function getByKey(key){
         if(!key)
-            throw "No specified title";
+            throw 'No specified title';
         var item = window.localStorage.getItem(key) ? window.localStorage.getItem(key) : [];
         return item ;
     }
@@ -44,7 +44,7 @@ function localStorage(){
 
     function remove(key){
         if(!key)
-            throw "No specified title";
+            throw 'No specified title';
         
         window.localStorage.removeItem(key);
         populateServiceItems();
